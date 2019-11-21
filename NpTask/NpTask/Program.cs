@@ -23,7 +23,7 @@ namespace NpTask
         List<Automobile> result = null;
         private int maxWeight = 0;
         private int bestPrice = 0;
-
+        public int numberOfAutomobile = 0;
         public Parom(int maxWeight_)
         {
             maxWeight = maxWeight_;
@@ -38,7 +38,8 @@ namespace NpTask
             FileInfo fi = new FileInfo(filename); // информация о файле 
             sw = fi.CreateText(); // или поток для записи 
 
-            int number = rnd.Next(2, 100);
+            int number = 13;//rnd.Next(2, 15);
+            numberOfAutomobile = number;
             sw.WriteLine(number.ToString());
             for (int i = 0; i < number; i++)
             {
@@ -118,6 +119,7 @@ namespace NpTask
 
         }
 
+        public void 
       
     }
     class Program
@@ -125,11 +127,11 @@ namespace NpTask
         static void Main()
         {
             Random rnd = new Random();
-            int MAX = rnd.Next(10, 20);
+            int MAX = rnd.Next(10, 400);
             Parom parom = new Parom(MAX);
 
             parom.Create("input.txt");
-
+            Console.WriteLine(parom.numberOfAutomobile);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             parom.EnumerationAutomobile(parom.subset);
